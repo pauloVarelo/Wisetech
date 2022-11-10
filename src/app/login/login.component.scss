@@ -1,0 +1,226 @@
+
+$primary-color: #21a815;
+$secundary-color: #FFF;
+$text-color-dark: #000;
+$text-color-light: #FFF;
+$icon-color: #F3F3F3;
+
+.form-button {
+    width: 140px;
+    height: 40px;
+    border-style: none;
+    border-radius: 50px;
+    border: 2px solid $primary-color;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: 800;
+    color: $primary-color;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.form-button-light {
+    border: 2px solid $secundary-color;
+    color: $text-color-light;
+}
+
+.form-button:hover {
+    background-color: $primary-color;
+    color: $secundary-color;
+
+}
+
+@media (max-width:768px) {
+    .form-button {
+        background-color: $primary-color;
+        color: $secundary-color;
+        border: 2px solid $secundary-color;
+    }
+
+}
+
+.form-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.form-input {
+    width: 290px;
+    height: 39px;
+    padding: 10px 20px;
+    border-style: none;
+    background-color: $icon-color;
+}
+
+.form-inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-social {
+    display: flex;
+    gap: 24px;
+}
+
+.form-title {
+    font-size: 3rem;
+    font-weight: 400;
+    color: $text-color-dark;
+}
+.form-title-light{
+    color: $text-color-light;
+}
+.form {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $secundary-color;
+    padding: 55px 0;
+    z-index: 10;
+    transition: 1s;
+}
+
+.form-login{
+    /* background-color: aqua; */
+}
+
+.form-register{
+    transform: translateX(-100%);
+    z-index: -1;
+    opacity: 0;
+}
+
+.login-container.toggle .form-login{
+    transform: translateX(100%);
+    z-index: -1;
+    opacity: 0;
+}
+
+.login-container.toggle .form-register{
+    transform: translateX(0%);
+    z-index: 1;
+    opacity: 1;
+}
+
+@media (max-width:768px){
+    .form{
+        width: 100%;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .form-register{
+        background-color: $primary-color;
+        color: $secundary-color;
+        position: absolute;
+        transform: translateX(100%);
+    }
+    .login-container.toggle .form-register{
+        transform: translateX(0%);
+    }
+}
+
+.login-container {
+    position: relative;
+    height: 480px;
+    width: 768px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px #A0A0A0;
+    overflow: hidden;
+}
+
+@media (max-width:768px) {
+    .login-container{
+        width: 100vw;
+        height: 100vh;
+        box-shadow: none;
+    }
+    
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: aqua;
+    transform: translateX(100%);
+    color: $text-color-light;
+    text-align: center;
+    transform: translateX(100%);
+    z-index: 10;
+    transition: 1s;
+}
+
+.login-container.toggle .overlay-container{
+    transform: translateX(0%);
+
+}
+
+@media (max-width:768px){
+    .overlay-container{
+        display: none;
+    }
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 35px;
+    background-color: $primary-color;
+    text-align: center;
+    transition: 1s;
+}
+
+.login-container.toggle .overlay:nth-child(2){
+    z-index: -1;
+    opacity: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: $text-color-dark;
+}
+
+.social-icon {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    background-color: $icon-color;
+    box-shadow: 0 4px 4px #0004;
+    transition: 1s;
+}
+
+.social-icon:hover{
+    background-color: $primary-color;
+    transform: translate(-15%);
+    color: --text-color-ligth;
+}
