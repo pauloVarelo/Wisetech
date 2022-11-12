@@ -6,7 +6,7 @@ export type Contract = {
     dataExpiration: Date;
     descricao: string;
     email: string;
-    sale: number;
+    sale: string;
     seller: string;
 }
 

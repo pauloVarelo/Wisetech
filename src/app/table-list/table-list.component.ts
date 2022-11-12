@@ -47,10 +47,11 @@ public db: Firestore;
     const querySnapshot = await getDocs(collection(db, document));
     querySnapshot.forEach((doc) => {
       this.contracts.push({
-        id: doc.id,
         ...doc.data(),
+        id: doc.id,
       } as Contract)
     });
+    
     console.log(this.contracts);
     
   
@@ -69,7 +70,7 @@ public db: Firestore;
     
     let dialogRef = this. dialog.open(EditModalComponent, {
       height: '100vh',
-      width: '130vh',
+      width: '100vh',
       data:contract,
     });
 

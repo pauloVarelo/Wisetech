@@ -16,6 +16,8 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthGuard } from './services/auth-guard';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatRippleModule,
     MatFormFieldModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    FontAwesomeModule
   ],
   declarations: [
     AppComponent,
@@ -42,7 +45,7 @@ import {MatSelectModule} from '@angular/material/select';
     EditModalComponent,
 
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

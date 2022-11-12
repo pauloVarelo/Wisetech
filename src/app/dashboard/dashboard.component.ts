@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Contract } from 'app/models/contract-model';
 import * as Chartist from 'chartist';
+import { initializeApp } from 'firebase/app';
+import { collection, Firestore, getDocs, getFirestore } from 'firebase/firestore';
+
+const document = "contrato";
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +14,14 @@ import * as Chartist from 'chartist';
 export class DashboardComponent implements OnInit {
 
   constructor() { }
+  
+  public contracts: Contract[]=[];
+  public db: Firestore;
+  public contractLength: number;
+  public sales: number = 0;
+  public bestSale: number = 0;
+  public bestSeller: string;
+
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -65,7 +78,7 @@ export class DashboardComponent implements OnInit {
 
       seq2 = 0;
   };
-  ngOnInit() {
+  async ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
@@ -73,7 +86,24 @@ export class DashboardComponent implements OnInit {
           series: [
               [12, 17, 7, 17, 23, 18, 38]
           ]
+          
       };
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCem-XMaVOiiQakEvhpO1Y-3RE03yxT7Os",
+        authDomain: "wisetech-be6a4.firebaseapp.com",
+        projectId: "wisetech-be6a4",
+        storageBucket: "wisetech-be6a4.appspot.com",
+        messagingSenderId: "749448077635",
+        appId: "1:749448077635:web:556646b304f02979bf8ff6",
+        measurementId: "G-PYWSQREHF7"
+      };
+      const app = initializeApp(firebaseConfig);
+    // Initialize Cloud Firestore and get a reference to the service
+     this.db = getFirestore(app);
+
+    // await this.createContract(db, data);
+    await this.readContract(this.db);
 
      const optionsDailySalesChart: any = {
           lineSmooth: Chartist.Interpolation.cardinal({
@@ -146,5 +176,29 @@ export class DashboardComponent implements OnInit {
       //start animation for the Emails Subscription Chart
       this.startAnimationForBarChart(websiteViewsChart);
   }
+  async readContract(db: Firestore) {
+    this.contracts = [];
+    const querySnapshot = await getDocs(collection(db, document));
+    console.log('aqui olha',querySnapshot.docs.length);
+    this.contractLength = querySnapshot.docs.length;
 
+    querySnapshot.forEach((doc) => {
+      this.sales += parseFloat(doc.data().sale);
+      this.calculateSale(doc.data() as Contract)
+      this.contracts.push({
+        ...doc.data(),
+        id: doc.id,
+      } as Contract)
+    });
+    
+    console.log(this.contracts);
+    
+  
+  }
+  calculateSale(contract: Contract){
+    if (this.bestSale < parseFloat(contract.sale)){
+      this.bestSale = parseFloat(contract.sale);
+      this.bestSeller = contract.seller;
+    } 
+  }
 }

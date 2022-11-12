@@ -11,6 +11,6 @@ export const data: Contract = {
     "dataExpiration": expirationDate,
     "descricao": "asdasd",
     "email": "paulohenrique@gmail.com",
-    "sale": 2500,
+    "sale": '2500',
     "seller": "Paulo",
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Contract } from 'app/models/contract-model';
 import { initializeApp } from 'firebase/app';
 import { addDoc, collection, Firestore, getDocs, getFirestore } from "firebase/firestore";
@@ -71,7 +71,7 @@ export class UserProfileComponent implements OnInit {
       dataExpiration: null,
       descricao: '',
       email: '',
-      sale: '',
+      sale: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
       seller: '',
     });
 

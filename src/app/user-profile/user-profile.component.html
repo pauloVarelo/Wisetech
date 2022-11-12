@@ -1,7 +1,7 @@
 <div class="main-content">
   <div class="container-fluid">
       <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-success">
                       <h4 class="card-title">New Contract</h4>
@@ -12,7 +12,7 @@
                           <div class="row">
                               <div class="col-md-5">
                                 <mat-form-field class="example-full-width">
-                                    <input formControlName="company" name="company" matInput placeholder="Company (disabled)" enable>
+                                    <input formControlName="company" name="company" matInput placeholder="Company" enable>
                                   </mat-form-field>
                               </div>
                               <div class="col-md-3">
@@ -39,7 +39,7 @@
                               </div>
                               <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                  <input formControlName="sale" name="sale" matInput placeholder="Sale" type="text">
+                                  <input formControlName="sale" name="sale" matInput placeholder="Sale" type="number">
                                 </mat-form-field>
                               </div>
                               <div class="col-md-4">
@@ -51,11 +51,12 @@
                           <div class="row">
                             <div class="col-md-6">
                               <mat-form-field class="example-full-width">
-                                <input formControlName="descricao" name="descricao" matInput placeholder="Descrição" type="text">
+                                <input formControlName="descricao" name="descricao" matInput placeholder="Description" type="text">
                               </mat-form-field>
                             </div>
                         </div>
                           <button mat-raised-button type="submit" class="btn btn-success pull-right">Save</button>
+                          <a [routerLink]="['/table-list']" t href="#" class="btn pull-right btn-danger">Cancel</a>
                           <div class="clearfix"></div>
                       </form>
                   </div>

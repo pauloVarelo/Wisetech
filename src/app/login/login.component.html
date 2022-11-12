@@ -4,14 +4,8 @@
             <form class="form form-login">
                 <h2 class="form-title">Entrar com</h2>
                 <div class="form-social">
-                    <a href="#" class="social-icon" (click)="loginFacebook()">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
                     <a href="#" class="social-icon" (click)="loginGoogle()">
-                        <i class="fa-brands fa-google"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fa-brands fa-linkedin-in"></i>
+                        <fa-icon class="" [icon]="faG"></fa-icon>
                     </a>
                 </div>
                 <p class="form-text">ou utilize sua conta</p>
@@ -48,7 +42,7 @@
                 <div class="overlay">
                     <h2 class="form-title form-title-light">Ja tem Conta?</h2>
                     <p class="form-text">Para entrar na nossa plataforma faça login com suas informações</p>
-                    <button class="form-button form-button-light" id="open-login">Entrar</button>
+                    <button type="submit"  class="form-button form-button-light" id="open-login">Entrar</button>
                 </div>
                 <div class="overlay">
                     <h2 class="form-title form-title-light">Bem vindo!</h2>

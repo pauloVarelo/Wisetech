@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { getAnalytics } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } from "firebase/auth"; 
+import { faG } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider } fr
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  faG = faG;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -73,6 +74,8 @@ signInWithPopup(auth, provider)
         this.router.navigate(['/dashboard']);
         // ...
       }).catch((error) => {
+        alert('Acesso Negado')
+        
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
